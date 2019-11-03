@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "cohanitay/first-pipeline"
+    registry = "cohanitay/one2onetool-staging"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
