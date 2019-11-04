@@ -28,7 +28,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Deploy Image to Repo') {
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
@@ -41,6 +41,11 @@ pipeline {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
+    }
+    stage('Deploy to Server'){
+      sh "docker rm -vf $(docker ps -a -q)"
+      sh "docker rmi -f $(docker images -a -q)"
+      sh "docker run --rm -p 4000:4000 cohanitay/one2onetool-staging:$BUILD_NUMBER"
     }
   }
 }
