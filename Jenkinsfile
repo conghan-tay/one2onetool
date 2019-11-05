@@ -3,6 +3,7 @@ pipeline {
     registry = "cohanitay/one2onetool-release"
     registryCredential = 'dockerhub'
     dockerImage = ''
+    DATA_FILE = 'Questions.json'
   }
   agent any
   stages {
