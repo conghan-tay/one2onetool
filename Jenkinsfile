@@ -9,6 +9,7 @@ pipeline {
     stage('Cloning Git') {
       steps {
         git 'https://github.com/conghan-tay/one2onetool.git'
+        git branch: 'one2onetool-staging'
       }
     }
     stage('Build') {
