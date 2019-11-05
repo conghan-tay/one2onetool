@@ -40,8 +40,7 @@ pipeline {
     stage('Remove Unused docker image') {
       steps{
         sh 'echo $registry:$BUILD_NUMBER'
-        sh 'chmod 777 ./checkRunning.sh'
-        sh './checkRunning.sh'
+        sh 'echo $PWD'
       }
     }
   }
