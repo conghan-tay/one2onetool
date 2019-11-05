@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "cohanitay/first-pipeline"
+    registry = "cohanitay/one2onetool-release"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Cloning Git') {
       steps {
-        git 'https://github.com/conghan-tay/one2onetool.git'
+        git branch: 'one2onetool-release', url:'https://github.com/conghan-tay/one2onetool.git'
       }
     }
     stage('Build') {
@@ -28,7 +28,7 @@ pipeline {
         }
       }
     }
-    stage('Deploy Image') {
+    stage('Deploy Image to Repo') {
       steps{
          script {
             docker.withRegistry( '', registryCredential ) {
@@ -39,7 +39,9 @@ pipeline {
     }
     stage('Remove Unused docker image') {
       steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
+        sh 'echo $registry:$BUILD_NUMBER'
+        sh 'chmod 777 ./checkRunning.sh'
+        sh './checkRunning.sh'
       }
     }
   }
