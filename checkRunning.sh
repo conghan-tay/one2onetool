@@ -1,3 +1,4 @@
+set -o xtrace
 ssh root@157.245.124.180
 if [ '$(docker ps -a -q -f name=current_staging)' ]; then
     docker rm current_staging
