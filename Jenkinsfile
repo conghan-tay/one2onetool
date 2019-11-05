@@ -40,6 +40,9 @@ pipeline {
     stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
+        sh "docker rm -vf $(docker ps -a -q)"
+        sh "docker rmi -f $(docker images -a -q)"
+        sh "docker run --rm -p 4000:4000 cohanitay/one2onetool-staging:$BUILD_NUMBER"
       }
     }
   }
