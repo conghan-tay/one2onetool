@@ -41,6 +41,7 @@ pipeline {
       steps{
         sh 'echo $registry:$BUILD_NUMBER'
         sh 'echo $PWD'
+        sh 'ls'
       }
     }
   }
