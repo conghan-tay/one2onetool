@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'npm test'
+        sh 'npsm test'
       }
     }
     stage('Building image') {
@@ -47,8 +47,8 @@ pipeline {
     }
   }
   post {
-    always {
-        sh 'echo "BUID FINISH" | mail -s "FINISH BUILD" cohanitay@gmail.com '
+    failure {
+        sh 'echo $registry:$BUILD_NUMBER FAILED | mail -s "FINISH BUILD" cohanitay@gmail.com '
     }
   }
 }
