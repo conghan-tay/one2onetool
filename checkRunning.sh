@@ -3,7 +3,7 @@
 set -o xtrace
 ssh root@157.245.124.180
 if [ '$(docker ps -a -q -f name=current_release)' ]; then
-    docker rm current_release
+    docker rm -vf current_release
     echo "Removing Old Containers"
 fi
 
