@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'npsm test'
+        sh 'npm test'
       }
     }
     stage('Building image') {
