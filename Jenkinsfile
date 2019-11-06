@@ -48,7 +48,7 @@ pipeline {
   }
   post {
     always {
-        emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        sh 'echo "BUID FINISH" | mail -s "FINISH BUILD" cohanitay@gmail.com '
     }
   }
 }
