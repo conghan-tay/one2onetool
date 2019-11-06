@@ -46,4 +46,9 @@ pipeline {
       }
     }
   }
+  post {
+    failure {
+        sh 'echo $registry:$BUILD_NUMBER FAILED | mail -s "FINISH BUILD STAGING" cohanitay@gmail.com '
+    }
+  }
 }
