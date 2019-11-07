@@ -14,6 +14,7 @@ pipeline {
     }
     stage('Build') {
        steps {
+         sh "cp ./data/Questions-test.json ./data/Questions.json"
          sh 'npm install'
        }
     }
