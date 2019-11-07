@@ -15,5 +15,11 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+RUN chmod -R 777 .
+
+RUN useradd -r appuser
+
+USER appuser
+
 EXPOSE 4000
 CMD [ "npm", "start" ]
